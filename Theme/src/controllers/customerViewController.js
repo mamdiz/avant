@@ -1,13 +1,16 @@
 const mongoose = require("mongoose");
-var customerViews = require("../models/customerView");
+var customerViewModel = require("../models/customerView");
+var customerViews = mongoose.model("customerView", customerViewModel);
 
 // Display list of all CustomerViews.
 exports.customerView_list = function(req, res) {
-  var customerViews = mongoose.model("customerView");
-
-  customerViews.find({}, function(err, data) {
-    console.log(">>>> " + data);
-  });
+  var data = [];
+  customerViews
+    .find()
+    .exec()
+    .then(item => data.push(item))
+    .catch(c => data.push(c));
+  res.send(data);
 };
 
 // Display detail page for a specific CustomerView.

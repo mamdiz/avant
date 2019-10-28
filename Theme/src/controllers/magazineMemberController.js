@@ -2,9 +2,9 @@ var magazineMember = require("../models/magazineMember");
 
 // Display list of all MagazineMembers.
 exports.magazineMember_list = function(req, res) {
-  var MongoClient = require("mongodb").MongoClient;
-  var url = "mongodb://localhost:27017/";
-  MongoClient.connect(url, function(err, db) {
+  var mongoose = require('mongoose');
+  var url = "mongodb://localhost:8080/";
+  mongoose.connect(url, function(err, db) {
     if (err) throw err;
     var dbo = db.db("Avant");
     dbo

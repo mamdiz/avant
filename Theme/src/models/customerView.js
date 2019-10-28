@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
 var customerViewSchema = new Schema({
   title: String,
   author: String,

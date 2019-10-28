@@ -1,8 +1,8 @@
 const config = {
   db: {
-    host: "",
-    port: ,
-    name: ""
+    host: "localhost",
+    port: 27017,
+    name: "Avant"
   }
 };
 module.exports = config;

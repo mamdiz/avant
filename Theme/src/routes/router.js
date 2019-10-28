@@ -1,4 +1,5 @@
 const express = require("express");
+const { mongoose } = "../config/db";
 const router = express.Router();
 
 // Require controller modules.
