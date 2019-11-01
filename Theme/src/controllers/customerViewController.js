@@ -1,49 +1,55 @@
-const mongoose = require("mongoose");
+require("../config/db");
 var customerViewModel = require("../models/customerView");
-var customerViews = mongoose.model("customerView", customerViewModel);
 
 // Display list of all CustomerViews.
 exports.customerView_list = function(req, res) {
-  var data = [];
-  customerViews
-    .find()
-    .exec()
-    .then(item => data.push(item))
-    .catch(c => data.push(c));
-  res.send(data);
+  customerViewModel.find({}, function(err, docs) {
+    if (err) {
+      return console.log(err);
+    }
+    res.type("json").send(docs);
+  });
 };
 
 // Display detail page for a specific CustomerView.
 exports.customerView_detail = function(req, res) {
-  res.send("NOT IMPLEMENTED: CustomerView detail: " + req.params.id);
-};
-
-// Display CustomerView create form on GET.
-exports.customerView_create_get = function(req, res) {
-  res.send("NOT IMPLEMENTED: CustomerView create GET");
+  customerViewModel.find({ title: req.body.title }, function(err, docs) {
+    if (err) {
+      return console.log(err);
+    }
+    res.type("json").send(docs);
+  });
 };
 
 // Handle CustomerView create on POST.
 exports.customerView_create_post = function(req, res) {
-  res.send("NOT IMPLEMENTED: CustomerView create POST");
-};
-
-// Display CustomerView delete form on GET.
-exports.customerView_delete_get = function(req, res) {
-  res.send("NOT IMPLEMENTED: CustomerView delete GET");
+  customerViewModel.create(req.body);
+  res.send("");
 };
 
 // Handle CustomerView delete on POST.
 exports.customerView_delete_post = function(req, res) {
-  res.send("NOT IMPLEMENTED: CustomerView delete POST");
-};
-
-// Display CustomerView update form on GET.
-exports.customerView_update_get = function(req, res) {
-  res.send("NOT IMPLEMENTED: CustomerView update GET");
+  customerViewModel.deleteOne({ title: req.body.title }, function(
+    err,
+    success
+  ) {
+    if (err) {
+      console.log(err);
+    }
+    res.send();
+  });
 };
 
 // Handle CustomerView update on POST.
 exports.customerView_update_post = function(req, res) {
-  res.send("NOT IMPLEMENTED: CustomerView update POST");
+  customerViewModel.updateOne(
+    { title: req.body.title },
+    req.body.newObject,
+    function(err, success) {
+      if (err) {
+        console.log(err);
+      }
+      res.send();
+    }
+  );
 };

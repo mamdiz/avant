@@ -59,44 +59,26 @@ router.get("/legends", legend_controller.legend_list);
 
 //#region Customer Views
 
-// GET request for creating customerView. NOTE This must come before route for id (i.e. display customerView).
-router.get(
-  "/customerView/create",
-  customerView_controller.customerView_create_get
-);
-
 // POST request for creating customerView.
 router.post(
   "/customerView/create",
   customerView_controller.customerView_create_post
 );
 
-// GET request to delete customerView.
-router.get(
-  "/customerView/:id/delete",
-  customerView_controller.customerView_delete_get
-);
-
 // POST request to delete customerView.
 router.post(
-  "/customerView/:id/delete",
+  "/customerView/delete",
   customerView_controller.customerView_delete_post
-);
-
-// GET request to update customerView.
-router.get(
-  "/customerView/:id/update",
-  customerView_controller.customerView_update_get
 );
 
 // POST request to update customerView.
 router.post(
-  "/customerView/:id/update",
+  "/customerView/update",
   customerView_controller.customerView_update_post
 );
 
 // GET request for one customerView.
-router.get("/customerView/:id", customerView_controller.customerView_detail);
+router.get("/customerView/detail", customerView_controller.customerView_detail);
 
 // GET request for list of all customerViews.
 router.get("/customerViews", customerView_controller.customerView_list);
