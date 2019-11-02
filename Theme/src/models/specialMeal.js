@@ -1,17 +1,15 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
 var specialMealSchema = new Schema({
-  title: String,
-  author: String,
-  body: String
-  // comments: [{ body: String, date: Date }],
-  // date: { type: Date, default: Date.now },
-  // hidden: Boolean,
-  // meta: {
-  //   votes: Number,
-  //   favs: Number
-  // }
+  mealpicture: { type: "String", required: true },
+  mealName: { type: "String", required: true },
+  mealstar: { type: "String", required: true },
+  mealprice: { type: "String", required: true }
 });
 
-module.exports = specialMealSchema;
+var specialMealModel = mongoose.model(
+  "specialMeal",
+  specialMealSchema,
+  "specialMeal"
+);
+module.exports = specialMealModel;

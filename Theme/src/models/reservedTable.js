@@ -1,17 +1,19 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
 var reservedTableSchema = new Schema({
-  title: String,
-  author: String,
-  body: String
-  // comments: [{ body: String, date: Date }],
-  // date: { type: Date, default: Date.now },
-  // hidden: Boolean,
-  // meta: {
-  //   votes: Number,
-  //   favs: Number
-  // }
+  name: { type: "String", required: true },
+  email: { type: "String", required: true },
+  phonenumber: { type: "String", required: true },
+  number: { type: "String", required: true },
+  date: { type: "String", required: true },
+  time: { type: "String", required: true },
+  favorite: { type: "String", required: true },
+  forwhat: { type: "String", required: true }
 });
 
-module.exports = reservedTableSchema;
+var reservedTableModel = mongoose.model(
+  "reservedTable",
+  reservedTableSchema,
+  "reservedTable"
+);
+module.exports = reservedTableModel;

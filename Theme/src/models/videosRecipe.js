@@ -1,17 +1,12 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
-var videosRecipeSchema = new Schema({
-  title: String,
-  author: String,
-  body: String
-  // comments: [{ body: String, date: Date }],
-  // date: { type: Date, default: Date.now },
-  // hidden: Boolean,
-  // meta: {
-  //   votes: Number,
-  //   favs: Number
-  // }
+var videoRecipeSchema = new Schema({
+  video: { type: "String", required: true }
 });
 
-module.exports = videosRecipeSchema;
+var videoRecipeModel = mongoose.model(
+  "videoRecipe",
+  videoRecipeSchema,
+  "videoRecipe"
+);
+module.exports = videoRecipeModel;

@@ -1,17 +1,16 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
 var footerDataSchema = new Schema({
-  title: String,
-  author: String,
-  body: String
-  // comments: [{ body: String, date: Date }],
-  // date: { type: Date, default: Date.now },
-  // hidden: Boolean,
-  // meta: {
-  //   votes: Number,
-  //   favs: Number
-  // }
+  youtube: { type: "String", required: true },
+  linkdin: { type: "String", required: true },
+  googleplus: { type: "String", required: true },
+  twitter: { type: "String", required: true },
+  facebook: { type: "String", required: true }
 });
 
-module.exports = footerDataSchema;
+var footerDataModel = mongoose.model(
+  "footerData",
+  footerDataSchema,
+  "footerData"
+);
+module.exports = footerDataModel;

@@ -1,17 +1,14 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
-
-var ourTeamSchema = new Schema({
-  title: String,
-  author: String,
-  body: String
-  // comments: [{ body: String, date: Date }],
-  // date: { type: Date, default: Date.now },
-  // hidden: Boolean,
-  // meta: {
-  //   votes: Number,
-  //   favs: Number
-  // }
+var magazineMemberSchema = new Schema({
+  memberPicture: { type: "String", required: true },
+  memberFullName: { type: "String", required: true },
+  commentofmember: { type: "String", required: true }
 });
 
-module.exports = ourTeamSchema;
+var magazineMemberModel = mongoose.model(
+  "magazineMember",
+  magazineMemberSchema,
+  "magazineMember"
+);
+module.exports = magazineMemberModel;

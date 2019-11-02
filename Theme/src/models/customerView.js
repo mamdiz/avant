@@ -1,9 +1,10 @@
 const mongoose = require("mongoose");
-var Schema = mongoose.Schema;
+const Schema = mongoose.Schema;
 var customerViewSchema = new Schema({
-  title: { type: "String", required: true },
-  author: { type: "String", required: true },
-  body: { type: "String", required: true }
+  userPicture: { type: "String", required: true },
+  userFullName: { type: "String", required: true },
+  comment: { type: "String", required: true },
+  stars: { type: "String", required: true }
 });
 
 var customerViewModel = mongoose.model(
